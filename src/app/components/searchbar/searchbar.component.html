@@ -1,1 +1,13 @@
-<p>searchbar works!</p>
+<mat-form-field class="full-width" appearance="fill">
+  <input type="text"
+         matInput
+         placeholder="Rechercher une région"
+         [formControl]="searchControl"
+         [matAutocomplete]="auto">
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayRegion" (optionSelected)="onOptionSelected($event.option.value.code)">
+    @for (region of regions(); track region) {
+      <mat-option [value]="region">{{region.nom}}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>
