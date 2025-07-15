@@ -1,59 +1,57 @@
-# AngularTechnicalTestGeoApi
+# 🚀 Angular Technical Test - Geo API
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+Angular application to search French regions, display their departments, and list the communes using the official [geo.api.gouv.fr](https://geo.api.gouv.fr) public API.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✨ Features
+
+- 🔎 Search for a French region by name with autocomplete
+- 🗺️ Display the list of departments in the selected region
+- 🏘️ Show the list of communes in the selected department
+- 🧪 Includes at least one unit test
+- 📚 Clean, maintainable code with Angular best practices
+
+---
+
+## ⚙️ Tech stack
+
+- **Angular** ^19.2
+- **TypeScript** ~5.7
+- **RxJS** ~7.8
+- **Zone.js** ~0.15
+- **Karma & Jasmine** for testing
+
+---
+
+## 🌐 APIs used
+
+- 🔹 Get regions by name (autocomplete):  
+  `GET https://geo.api.gouv.fr/regions?nom=nomDeLaRegion`
+
+- 🔹 Get departments of a region:  
+  `GET https://geo.api.gouv.fr/regions/{regionCode}/departements`
+
+- 🔹 Get communes of a department:  
+  `GET https://geo.api.gouv.fr/departements/{departmentCode}/communes`
+
+---
+
+## 📂 NPM Scripts
+
+| Script         | Description                       |
+|----------------|----------------------------------|
+| `npm start`    | Run the app in dev mode on `http://localhost:4200` |
+| `npm run build`| Build the app for production     |
+| `npm run watch`| Watch files and rebuild on changes |
+| `npm test`     | Run unit tests with Karma & Jasmine |
+
+---
+
+## 🚀 Installation
 
 ```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+git clone https://github.com/your-username/angular-technical-test-geo-api.git
+cd angular-technical-test-geo-api
+npm install
+npm start
