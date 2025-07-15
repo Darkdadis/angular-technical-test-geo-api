@@ -1,5 +1,5 @@
 export interface RegionModel {
   code: string;
-  name: string;
+  nom: string;
   score: number;
 }

@@ -1,0 +1,12 @@
+<app-searchbar></app-searchbar>
+
+<mat-list class="full-width">
+  @if (selectedRegion().code) {
+    <h3>Liste des départements pour la région {{selectedRegion().nom}}</h3>
+  }
+  @for (dept of departements(); track dept.code) {
+    <mat-list-item (click)="onSelectDepartment(dept)">
+      {{ dept.nom }} ({{ dept.code }})
+    </mat-list-item>
+  }
+</mat-list>

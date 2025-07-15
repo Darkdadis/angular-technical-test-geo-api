@@ -4,6 +4,7 @@ import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from '@angular/mater
 import {MatFormField, MatInput} from '@angular/material/input';
 import { GeoApiService} from '../../services/geo-api.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {RegionModel} from '../../models/region.model';
 
 @Component({
   selector: 'app-searchbar',
@@ -40,10 +41,11 @@ export class SearchbarComponent {
       });
   }
 
-  onOptionSelected(code: string) {
-    console.log('value selected', code);
-    if (code) {
-      this.geoApiService.searchDistrict(code);
+  onOptionSelected(region: RegionModel) {
+    console.log('value selected', region);
+    if (region.code) {
+      this.geoApiService.setSelectedRegion(region);
+      this.geoApiService.searchDepartements(region.code);
     } else {
       this.geoApiService['departementsSignal'].set([]);
     }

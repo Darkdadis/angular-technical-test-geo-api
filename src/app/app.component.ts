@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {SearchbarComponent} from './components/searchbar/searchbar.component';
+import {SearchFormComponent} from './components/search-form/search-form.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SearchbarComponent],
+  imports: [SearchFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

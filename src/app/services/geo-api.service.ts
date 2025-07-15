@@ -1,5 +1,6 @@
 import {Injectable, signal} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {RegionModel} from '../models/region.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,11 @@ import { HttpClient } from '@angular/common/http';
 export class GeoApiService {
   private regionsSignal = signal<any[]>([]);
   private departementsSignal = signal<any[]>([]);
+  private regionSelectedSignal  = signal<RegionModel>({
+    code: '',
+    nom: '',
+    score: 0
+  });
 
   constructor(private http: HttpClient) { }
 
@@ -25,13 +31,21 @@ export class GeoApiService {
     });
   }
 
+  get regionSelected() {
+    return this.regionSelectedSignal.asReadonly();
+  }
+
+  setSelectedRegion(region: RegionModel) {
+    this.regionSelectedSignal.set(region);
+  }
+
 
 
   get departements() {
     return this.departementsSignal.asReadonly();
   }
 
-  searchDistrict(regionCode: string) {
+  searchDepartements(regionCode: string) {
     const url = `https://geo.api.gouv.fr/regions/${regionCode}/departements`;
     this.http.get<any[]>(url).subscribe({
       next: (data) => {
@@ -45,5 +59,7 @@ export class GeoApiService {
       }
     });
   }
+
+
 
 }
