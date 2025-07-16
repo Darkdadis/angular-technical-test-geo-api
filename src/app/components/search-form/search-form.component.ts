@@ -29,6 +29,12 @@ export class SearchFormComponent {
     this.selectedRegion = geoApiService.regionSelected;
   }
 
+  /**
+   * Handles the selection of a department. Sets the selected department and navigates to the corresponding communes view.
+   *
+   * @param {DepartementModel} departement - The department object that has been selected.
+   * @return {void} This method does not return a value.
+   */
   onSelectDepartment(departement: DepartementModel) {
     this.geoApiService.setSelectedDepartement(departement);
     this.router.navigate(['/communes', departement.code]);
