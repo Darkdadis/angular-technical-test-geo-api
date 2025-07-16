@@ -63,6 +63,10 @@ export class GeoApiService {
     return this.communesSignal.asReadonly();
   }
 
+  resetCommunes() {
+    this.communesSignal.set([]);
+  }
+
   searchCommunes(departementCode: string) {
     const url = `https://geo.api.gouv.fr/departements/${departementCode}/communes?fields=code,nom,codesPostaux`;
     this.http.get<CommuneModel[]>(url).subscribe({

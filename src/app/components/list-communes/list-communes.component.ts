@@ -37,6 +37,10 @@ export class ListCommunesComponent {
     this.geoApiService.searchCommunes(this.departementCode);
   }
 
+  ngOnDestroy() {
+    this.geoApiService.resetCommunes();
+  }
+
   goBack() {
     this.router.navigate(['/']);
   }
