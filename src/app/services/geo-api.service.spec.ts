@@ -1,12 +1,20 @@
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { GeoApi } from './geo-api.service';
+import {HttpClient, HttpHandler} from '@angular/common/http';
 
-describe('GeoApiServiceService', () => {
+describe('GeoApi', () => {
   let service: GeoApi;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        provideHttpClientTesting(),
+        HttpClient,
+        HttpHandler,
+      ]
+    });
     service = TestBed.inject(GeoApi);
   });
 
