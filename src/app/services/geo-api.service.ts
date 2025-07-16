@@ -2,6 +2,7 @@ import {Injectable, signal} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {RegionModel} from '../models/region.model';
 import {DepartementModel} from '../models/departement.model';
+import {CommuneModel} from '../models/commune.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import {DepartementModel} from '../models/departement.model';
 export class GeoApiService {
   private regionsSignal = signal<RegionModel[]>([]);
   private departementsSignal = signal<DepartementModel[]>([]);
+  private communesSignal = signal<CommuneModel[]>([]);
   private regionSelectedSignal  = signal<RegionModel>({
     code: '',
     nom: '',
@@ -21,6 +23,9 @@ export class GeoApiService {
   })
 
   constructor(private http: HttpClient) { }
+
+
+  //------------------------CALL API-------------------------
 
   get regions() {
     return this.regionsSignal.asReadonly();
@@ -55,6 +60,25 @@ export class GeoApiService {
       }
     });
   }
+
+  get communes() {
+    return this.communesSignal.asReadonly();
+  }
+
+  searchCommunes(departementCode: string) {
+    const url = `https://geo.api.gouv.fr/departements/${departementCode}/communes?fields=code,nom,codesPostaux`;
+    this.http.get<CommuneModel[]>(url).subscribe({
+      next: data => {
+        console.log('data communes ======> ', data);
+        this.communesSignal.set(data);
+      }, error: (err) => {
+        console.error('API error:', err);
+        this.communesSignal.set([]);
+      }
+    })
+  }
+
+  //------------------------SET SELECTED VALUE----------------------------
 
   get regionSelected() {
     return this.regionSelectedSignal.asReadonly();

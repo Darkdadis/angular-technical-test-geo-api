@@ -3,6 +3,7 @@ import {SearchbarComponent} from "../searchbar/searchbar.component";
 import {MatList, MatListItem} from '@angular/material/list';
 import {GeoApiService} from '../../services/geo-api.service';
 import {DepartementModel} from '../../models/departement.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-form',
@@ -19,13 +20,17 @@ export class SearchFormComponent {
   departements;
   selectedRegion;
 
-  constructor(private geoApiService: GeoApiService) {
+  constructor(
+    private geoApiService: GeoApiService,
+    private router: Router
+    ) {
     this.departements = geoApiService.departements;
     this.selectedRegion = geoApiService.regionSelected;
   }
 
   onSelectDepartment(departement: DepartementModel) {
     this.geoApiService.setSelectedDepartement(departement);
+    this.router.navigate(['/communes', departement.code]);
     console.log('departement selectionné:', this.geoApiService.departementSelected());
   }
 }

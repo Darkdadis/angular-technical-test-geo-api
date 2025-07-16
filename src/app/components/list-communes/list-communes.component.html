@@ -1,0 +1,16 @@
+<mat-toolbar color="secondary">
+  <button mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Liste des communes du département {{departementSelected().nom}} </span>
+</mat-toolbar>
+
+<div class="content">
+  <mat-list class="full-width">
+    @for (commune of communes(); track commune.code) {
+      <mat-list-item>
+        {{ commune.nom }}
+      </mat-list-item>
+    }
+  </mat-list>
+</div>
