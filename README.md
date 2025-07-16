@@ -1,26 +1,16 @@
 # 🚀 Angular Technical Test - Geo API
 
-Angular application to search French regions, display their departments, and list the communes using the official [geo.api.gouv.fr](https://geo.api.gouv.fr) public API.
+Technical test - Angular application to search French regions, display their departments, and list the communes using the official [geo.api.gouv.fr](https://geo.api.gouv.fr) public API.
 
 ---
 
-## ✨ Features
+## ✨ Features required
 
 - 🔎 Search for a French region by name with autocomplete
 - 🗺️ Display the list of departments in the selected region
 - 🏘️ Show the list of communes in the selected department
 - 🧪 Includes at least one unit test
 - 📚 Clean, maintainable code with Angular best practices
-
----
-
-## ⚙️ Tech stack
-
-- **Angular** ^19.2
-- **TypeScript** ~5.7
-- **RxJS** ~7.8
-- **Zone.js** ~0.15
-- **Karma & Jasmine** for testing
 
 ---
 
@@ -42,8 +32,6 @@ Angular application to search French regions, display their departments, and lis
 | Script         | Description                       |
 |----------------|----------------------------------|
 | `npm start`    | Run the app in dev mode on `http://localhost:4200` |
-| `npm run build`| Build the app for production     |
-| `npm run watch`| Watch files and rebuild on changes |
 | `npm test`     | Run unit tests with Karma & Jasmine |
 
 ---
