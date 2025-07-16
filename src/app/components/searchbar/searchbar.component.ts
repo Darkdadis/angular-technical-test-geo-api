@@ -51,7 +51,7 @@ export class SearchbarComponent {
     }
   }
 
-  displayRegion(region: any): string {
+  displayRegion(region: RegionModel): string {
     return region && region.nom ? region.nom : '';
   }
 }

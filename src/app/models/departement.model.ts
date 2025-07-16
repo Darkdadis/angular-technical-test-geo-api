@@ -1,5 +1,5 @@
 export interface DepartementModel {
   code: string;
-  name: string;
+  nom: string;
   codeRegion: string;
 }

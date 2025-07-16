@@ -25,7 +25,7 @@ export class SearchFormComponent {
   }
 
   onSelectDepartment(departement: DepartementModel) {
-    console.log('departement ======> ', departement);
-    console.log('this.selectedRegion ======> ', this.selectedRegion());
+    this.geoApiService.setSelectedDepartement(departement);
+    console.log('departement selectionné:', this.geoApiService.departementSelected());
   }
 }
