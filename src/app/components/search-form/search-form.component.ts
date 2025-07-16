@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {SearchbarComponent} from "../searchbar/searchbar.component";
 import {MatList, MatListItem} from '@angular/material/list';
-import {GeoApiService} from '../../services/geo-api.service';
+import {GeoApi} from '../../services/geo-api.service';
 import {DepartementModel} from '../../models/departement.model';
 import { Router } from '@angular/router';
 
@@ -21,7 +21,7 @@ export class SearchFormComponent {
   selectedRegion;
 
   constructor(
-    private geoApiService: GeoApiService,
+    private geoApiService: GeoApi,
     private router: Router
     ) {
     this.departements = geoApiService.departements;

@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
-import {GeoApiService} from '../../services/geo-api.service';
+import {GeoApi} from '../../services/geo-api.service';
 import {MatList, MatListItem} from '@angular/material/list';
 
 @Component({
@@ -25,7 +25,7 @@ export class ListCommunesComponent {
 
   constructor(
     private router: Router,
-    private geoApiService: GeoApiService,
+    private geoApiService: GeoApi,
     private route: ActivatedRoute
     ) {
     this.communes = geoApiService.communes;

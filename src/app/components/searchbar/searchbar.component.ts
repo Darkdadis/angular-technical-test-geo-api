@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
 import {MatFormField, MatInput} from '@angular/material/input';
-import { GeoApiService} from '../../services/geo-api.service';
+import { GeoApi} from '../../services/geo-api.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import {RegionModel} from '../../models/region.model';
 
@@ -24,7 +24,7 @@ export class SearchbarComponent {
   regions;
 
 
-  constructor(private geoApiService: GeoApiService) {
+  constructor(private geoApiService: GeoApi) {
     this.regions = this.geoApiService.regions;
 
     this.searchControl.valueChanges

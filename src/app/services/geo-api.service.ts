@@ -7,7 +7,7 @@ import {CommuneModel} from '../models/commune.model';
 @Injectable({
   providedIn: 'root'
 })
-export class GeoApiService {
+export class GeoApi {
   private regionsSignal = signal<RegionModel[]>([]);
   private departementsSignal = signal<DepartementModel[]>([]);
   private communesSignal = signal<CommuneModel[]>([]);
