@@ -6,8 +6,20 @@
 </mat-toolbar>
 
 <div class="content">
+
+  <div class="alphabet-filter">
+    @for (letter of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''); track letter) {
+      <button
+        (click)="selectLetter(letter)"
+        [class.active]="selectedLetter === letter">
+        {{ letter }}
+      </button>
+    }
+    <button (click)="selectLetter('')" [class.active]="selectedLetter === ''" >Tout</button>
+  </div>
+
   <mat-list class="full-width">
-    @for (commune of communes(); track commune.code) {
+    @for (commune of filteredCommunes; track commune.code) {
       <mat-list-item>
         {{ commune.nom }}
       </mat-list-item>

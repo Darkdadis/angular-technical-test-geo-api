@@ -31,6 +31,5 @@ export class SearchFormComponent {
   onSelectDepartment(departement: DepartementModel) {
     this.geoApiService.setSelectedDepartement(departement);
     this.router.navigate(['/communes', departement.code]);
-    console.log('departement selectionné:', this.geoApiService.departementSelected());
   }
 }

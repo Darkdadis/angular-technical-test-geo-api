@@ -51,8 +51,6 @@ export class GeoApiService {
     this.http.get<DepartementModel[]>(url).subscribe({
       next: data => {
         this.departementsSignal.set(data);
-        console.log('this.regions ======> ', this.regions());
-        console.log(this.departements());
       },
       error: (err) => {
         console.error('API error:', err);
@@ -69,7 +67,6 @@ export class GeoApiService {
     const url = `https://geo.api.gouv.fr/departements/${departementCode}/communes?fields=code,nom,codesPostaux`;
     this.http.get<CommuneModel[]>(url).subscribe({
       next: data => {
-        console.log('data communes ======> ', data);
         this.communesSignal.set(data);
       }, error: (err) => {
         console.error('API error:', err);

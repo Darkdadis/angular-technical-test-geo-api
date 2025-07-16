@@ -34,11 +34,26 @@ export class ListCommunesComponent {
 
   ngOnInit(): void {
     this.departementCode = this.route.snapshot.paramMap.get('codeDepartement')!;
-    console.log('this.departementCode ======> ', this.departementCode);
     this.geoApiService.searchCommunes(this.departementCode);
   }
 
   goBack() {
     this.router.navigate(['/']);
+  }
+
+  selectedLetter: string | null = null;
+
+  get filteredCommunes() {
+    if (!this.selectedLetter || this.selectedLetter === '') {
+      return this.geoApiService.communes();
+    }
+
+    return this.geoApiService.communes().filter(dept =>
+      dept.nom.toUpperCase().startsWith(<string>this.selectedLetter)
+    );
+  }
+
+  selectLetter(letter: string) {
+    this.selectedLetter = letter;
   }
 }

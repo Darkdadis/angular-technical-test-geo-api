@@ -42,7 +42,6 @@ export class SearchbarComponent {
   }
 
   onOptionSelected(region: RegionModel) {
-    console.log('value selected', region);
     if (region.code) {
       this.geoApiService.setSelectedRegion(region);
       this.geoApiService.searchDepartements(region.code);
