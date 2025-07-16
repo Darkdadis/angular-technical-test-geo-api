@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, Signal} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {GeoApi} from '../../services/geo-api.service';
 import {MatList, MatListItem} from '@angular/material/list';
+import {CommuneModel} from '../../models/commune.model';
+import {DepartementModel} from '../../models/departement.model';
 
 @Component({
   selector: 'app-list-communes',
@@ -20,8 +22,9 @@ import {MatList, MatListItem} from '@angular/material/list';
 })
 export class ListCommunesComponent {
   departementCode!: string;
-  communes;
-  departementSelected;
+  communes: Signal<CommuneModel[]>;
+  departementSelected: Signal<DepartementModel>;
+  selectedLetter: string | null = null;
 
   constructor(
     private router: Router,
@@ -44,8 +47,6 @@ export class ListCommunesComponent {
   goBack() {
     this.router.navigate(['/']);
   }
-
-  selectedLetter: string | null = null;
 
   get filteredCommunes() {
     if (!this.selectedLetter || this.selectedLetter === '') {

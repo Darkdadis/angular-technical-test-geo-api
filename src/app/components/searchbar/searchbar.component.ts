@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
 import {MatFormField, MatInput} from '@angular/material/input';
@@ -20,9 +20,8 @@ import {RegionModel} from '../../models/region.model';
   styleUrl: './searchbar.component.scss'
 })
 export class SearchbarComponent {
-  searchControl = new FormControl('');
-  regions;
-
+  searchControl: FormControl<string | null> = new FormControl('');
+  regions: Signal<RegionModel[]>;
 
   constructor(private geoApiService: GeoApi) {
     this.regions = this.geoApiService.regions;
